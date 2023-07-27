@@ -1,0 +1,17 @@
+
+<input 
+  type="text" 
+  placeholder="search"
+  #voice
+  (keyup.enter)="searchData(voice.value)"
+  [value]="voiceService.text"
+  />
+
+  <ng-container *ngIf="!voiceService.isStarted; else noVisible">
+    <em (click)="recognitionStart()" class="fa fa-microphone-slash" aria-hidden="true"></em>
+  </ng-container>
+
+  <ng-template #noVisible>
+    <em (click)="recognitionStop()" class="fa fa-microphone" aria-hidden="true"></em>
+  </ng-template>
+
